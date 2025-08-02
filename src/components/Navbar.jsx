@@ -4,11 +4,5 @@ export function Navbar() {
     )
 }
 
-import { Cartwidget } from "./CartWidget"
 
-function CartWidget(); {
-  return <div>
-    <CartWidget/>
-  </div>
-}
 
