@@ -1,5 +1,5 @@
 export function Cartwidget() {
     return (
-        <Cartwidget>🛒</Cartwidget>
+        <div>🛒</div>
     )
 }

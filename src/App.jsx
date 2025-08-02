@@ -6,6 +6,7 @@ function App() {
   
   return <div>
     <Navbar />
+    <Itemlistcontainer mensaje ="Bienvenido a Marcita joyas"/>
   </div>
 }
 
