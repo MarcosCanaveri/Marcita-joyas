@@ -1,4 +1,4 @@
-export function Button(props)
+export function Button(props) {
 
 return ( 
     <button className="btn">
@@ -7,3 +7,4 @@ return (
         {props.icono}
     </button>
 )
+}
