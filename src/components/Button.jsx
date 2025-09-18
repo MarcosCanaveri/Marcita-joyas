@@ -1,10 +1,9 @@
 export function Button(props) {
 
-return ( 
-    <button className="btn">
-        ◯
-        {props.nombre}
-        {props.icono}
-    </button>
-)
+    return (
+        <button className="btn">
+            {props.icono}
+            {props.nombre}            
+        </button>
+    )
 }
