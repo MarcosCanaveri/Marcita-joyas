@@ -1,18 +1,20 @@
 import { Navbar } from "./Navbar"
 import { ItemListContainer } from "./ItemListContainer"
-import { Button } from "./Button"
+import { Routes, Route } from "react-router-dom"
+/*import { ItemDetailContainer } from "./ItemDetailContainer"*/
 
 function App() {
-  
+
   return (
-  <div>
-    <Navbar />
-    <Button nombre="Home" icono="🏠" />
-    <Button nombre="Productos" icono="🔍"/>
-    <Button nombre="Acero" icono="💍" />
-    <Button nombre="Plata" icono="💎"/>
-    <ItemListContainer mensaje ="Bienvenido a Marcita joyas"/>
-  </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/productos" element={<p>Soy el producto</p>} />
+        <Route path="/acero" element={<p>Soy el acero</p>} />
+        <Route path="/plata" element={<p>Soy el plata</p>} />       
+      </Routes>
+    </>
   )
 }
 
