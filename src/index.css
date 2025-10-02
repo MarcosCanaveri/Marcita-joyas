@@ -17,9 +17,10 @@
 }
 
 #root {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  --main-padding: 10px;
 }
 
 .header {
@@ -55,4 +56,15 @@
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.product {
+  padding: var(--main-padding)
+}
+
+.footer {
+  background-color:#a59910;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
 }

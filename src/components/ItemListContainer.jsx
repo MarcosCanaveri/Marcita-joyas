@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export function ItemListContainer() {
 
@@ -39,9 +40,17 @@ export function ItemListContainer() {
 
             <section className="main__section">
                 <h2 className="main__title">Soy el item list container</h2>
+                <div className="products">
                 {products.map((products) => {
-                    return <p>{products.title}</p>
+                    return (
+                    <article className="product">
+                        <h3>{products.title}</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <Link to={'/product/${product.id}'}>Ver detalle</Link>
+                        </article>
+                    )
                 })}
+                </div>
 
 
                 <div className="products">

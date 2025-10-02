@@ -5,7 +5,7 @@ export function Navbar() {
     return (
         <header className="header">
             <h1 className="header__title">Marcita joyas</h1>
-        <nav>
+        <nav className="header__nav nav">
             <Link className="header__link nav__link" to="/">Home</Link>
             <Link className="header__link nav__link" to="/productos">Productos</Link>
             <Link className="header__link nav__link" to="/acero">Acero</Link>
