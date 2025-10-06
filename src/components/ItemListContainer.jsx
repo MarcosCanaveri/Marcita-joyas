@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 export function ItemListContainer() {
 
     const [products, setProducts] = useState([])
+    const resultado = useParams()
+    console.log("ItemDetailContainer - resultado:", resultado)
 
     useEffect(() => {
         async function getData() {
@@ -33,7 +36,7 @@ export function ItemListContainer() {
                     <article className="product">
                         <h3>{product.title}</h3>
                         <p>{product.description}</p>
-                        <Link to={`/product/${product.title}`}>Ver detalle</Link>
+                        <Link to={`/product/${product.id}`}>Ver detalle</Link>
                         </article>
                     )
                 })}

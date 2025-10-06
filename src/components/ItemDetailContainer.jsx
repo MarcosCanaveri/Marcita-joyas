@@ -21,6 +21,7 @@ export function ItemDetailContainer() {
         }, [])
 
     return (
-        <div>{product.title}</div>
+        <h1>{product.title}</h1>
+
     )
 }
