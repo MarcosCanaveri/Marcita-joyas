@@ -2,8 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './components/App'
 import { BrowserRouter } from 'react-router-dom'
+import { CartCustomProvider } from './components/CartContext'
+
 import './index.css'
-import { CustomContext } from './components/CustomContext'
 
 
 
@@ -13,9 +14,9 @@ const VDOMElement = createRoot(DOMElement)
 VDOMElement.render(
   <StrictMode>
     <BrowserRouter>
-    <CustomContext>
+      <CartCustomProvider>
       <App />
-      </CustomContext>
+      </CartCustomProvider>
     </BrowserRouter>  
   </StrictMode>,
 )

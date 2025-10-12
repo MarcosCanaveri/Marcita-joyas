@@ -1,22 +1,33 @@
 import { Contador } from "./Contador";
 import { useState, useContext } from "react"
-import { miContexto } from "./CustomContext";
+import { CartContext } from "./CartContext";
+import { Button } from "antd";
 
-export function ItemDetail(props) {
 
-    const [received, setReceived] = useState(false)
-    const elValorDelContexto = useContext(miContexto)
-    console.log("Resultado:", elValorDelContexto)
+export const ItemDetail = (props) => {
+
+    const [quantity, setQuantity] = useState(0)
+    const ValorDelContexto = useContext(CartContext)
 
     const handle = (data) => {
-        setReceived(true)
+        setQuantity(data)
     }
+
+    const handleAddToCart = () => {
+        console.log(quantity)
+        ValorDelContexto.addItemToCart(quantity)
+    }
+
 
     return (
         <div>
             {props.product.title}
-            <Contador handle={handle}/>
-            <p>{received === true ? "Se recibio 1" : "No se recibio"}</p>
+            <Contador handle={handle} />
+            {quantity > 0 ? (
+                <Button type="primary" onClick={handleAddToCart}>
+                    Agregar al carrito
+                </Button>
+            ) : null}
         </div>
     )
 }
