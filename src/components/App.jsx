@@ -12,7 +12,6 @@ function App() {
   return (
     <>
       <Navbar />
-      <Button onClick={handlePrueba}>Prueba</Button>
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/productos" element={<p>Soy el producto</p>} />
