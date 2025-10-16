@@ -23,9 +23,11 @@ export function Cart() {
 
         consulta
           .then((response) => {
+            toast.dismiss()
             toast.success("Compra realizada. Su código de compra es"+ response.id)
           })
           .catch(() =>{
+            toast.dismiss()
             toast.error("Compra no realizada")
           })
 

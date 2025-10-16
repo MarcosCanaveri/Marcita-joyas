@@ -1,26 +1,74 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
+import toast from "react-hot-toast"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../firebaseConfig"
 
 export function ItemListContainer() {
 
     const [products, setProducts] = useState([])
     const resultado = useParams()
-    console.log("ItemDetailContainer - resultado:", resultado)
 
     useEffect(() => {
+        toast.loading("Cargando...")
         async function getData() {
             try {
-                const resultado = await fetch("https://dummyjson.com/products")
+                /*const resultado = await fetch("https://dummyjson.com/products")
                 const resultado2 = await resultado.json()
-                setProducts(resultado2.products)
+                setProducts(resultado2.products)*/
+                const productosCollection =  collection(db,"productos")
+
+                const consulta = await getDocs(productosCollection)
+
+                const productos = []
+
+                consulta.docs.forEach((doc) => {
+                    productos.push(doc.data())
+                })
+
+                setProducts(productos)
+
+
+                toast.dismiss()
+                toast.success("Datos cargados correctamente")
             } catch (error) {
                 console.log(error)
+                toast.dismiss()
+                toast.error("Error al cargar datos")
             }
 
         }
 
-        getData()
+                async function getDataByCategory() {
+            try {
+
+                const productosCollection =  collection(db,"productos")
+
+                const filtro = query (productosCollection, where("category","==","acero"))
+                
+                const consulta = await getDocs(filtro)
+
+                const productos = []
+
+                consulta.docs.forEach((doc) => {
+                    productos.push(doc.data())
+                })
+
+                setProducts(productos)
+
+
+                toast.dismiss()
+                toast.success("Datos cargados correctamente")
+            } catch (error) {
+                console.log(error)
+                toast.dismiss()
+                toast.error("Error al cargar datos")
+            }
+
+        }
+
+        getDataByCategory()
     }, [])
 
 
@@ -36,6 +84,8 @@ export function ItemListContainer() {
                     <article className="product">
                         <h3>{product.title}</h3>
                         <p>{product.description}</p>
+                        <p>{product.category}</p>
+                        <p>{product.price}</p>
                         <Link to={`/product/${product.id}`}>Ver detalle</Link>
                         </article>
                     )
