@@ -37,7 +37,8 @@ export function ItemListContainer() {
                 toast.dismiss()
                 toast.error("Error al cargar datos")
             }
-
+        getData()
+     
         }
 
                 async function getDataByCategory() {
